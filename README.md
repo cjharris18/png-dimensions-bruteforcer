@@ -1,4 +1,12 @@
-# Corrupted png Dimensions Bruteforcer
+<h1 align="center">
+  Corrupted PNG Dimensions Bruteforcer
+</h1>
+<p align="center">
+<img alt="Supported Platforms" src="https://img.shields.io/badge/Platform-Linux-blue?style=for-the-badge">
+<img alt="Language" src="https://img.shields.io/badge/Language-Python3-green?style=for-the-badge">
+<img alt="GitHub file size in bytes" src="https://img.shields.io/github/size/cjharris18/png-dimensions-bruteforcer/png_dimensions_bruteforce.py?color=brightgreen&style=for-the-badge">
+<img alt="License" src="https://img.shields.io/badge/License-MIT-orange?style=for-the-badge">
+</p>
 
 ## Why is this tool needed?
 
