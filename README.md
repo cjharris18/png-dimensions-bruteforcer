@@ -8,6 +8,7 @@
 <img alt="License" src="https://img.shields.io/badge/License-MIT-orange?style=for-the-badge">
 </p>
 
+This tool was created for a CTF Challenge, for more information, see my [writeup here](https://cjharris.co.uk/intakectfmissingbytes/).
 ## Why is this tool needed?
 
 Sometimes a PNG can be corrupted. A useful tool for checking this is [`pngcheck`](http://www.libpng.org/pub/png/apps/pngcheck.html). If you run this and find your image has invalid dimensions, like so:
