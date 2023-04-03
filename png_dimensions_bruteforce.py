@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser(description='Brute force the image dimensions o
 required = parser.add_argument_group('Required Arguments')
 optional = parser.add_argument_group('Optional Arguments')
 
-required.add_argument('FILE', help='The filename of the png image you want to bruteforce.')
+required.add_argument('-f','--file', help='The filename of the png image you want to bruteforce.')
 optional.add_argument('-v', '--verbose', help='Verbose mode.', action='store_true')
 optional.add_argument('-o', '--output', help='Output the fixed png to a different filename.')
 args = parser.parse_args()
@@ -24,12 +24,11 @@ print(' '*4 + '**' + ' '*4 + 'PNG Image Dimension Bruteforcer' + ' '*4 + '**')
 print(' '*15 + 'Created by cjharris18')
 print('='*51 + '\n')
 
-png = bytearray(open(args.FILE, 'rb').read())
+png = bytearray(open(args.file, 'rb').read())
 
 # Pull the crc
 crcStart = 29
 crcTarget = (bytearray(png[crcStart:crcStart+4])).hex()
-crcTarget = '0x' + str(crcTarget)[:]
 
 for width in range(1000):
     for height in range(1000):
@@ -37,17 +36,21 @@ for width in range(1000):
         png[0x10:0x14] = struct.pack(">I",width)
         png[0x14:0x18] = struct.pack(">I",height)
 
-        calculatedCrc = hex(crc32(png[12:29]))
-        if calculatedCrc == crcTarget:
-            if args.verbose == True:
-                print('Found Correct Dimensions...\nWidth: {}\nHeight: {}'.format(hex(width),hex(height)))
+        calculatedCrc = crc32(png[12:29])
+        if calculatedCrc == int(crcTarget, 16):
+            if args.verbose:
+                print('Found Correct Dimensions...\nWidth: {}\nHeight: {}'.format(width, height))
                 print('\nRemember to pad this with leading 0\'s as required.')
-            if ('output' in args) == True:
+            if args.output:
                 with open(args.output,'wb') as file:
                     file.write(png)
-                    print('\nSuccessfully wrote to: {}'.format(args.overwrite))
+                    print('\nSuccessfully wrote to: {}'.format(args.output))
             else:
                 with open('fixed.png','wb') as file:
                     file.write(png)
                     print('\nSuccessfully wrote to: fixed.png')
             break
+    else:
+        continue
+    break
+
