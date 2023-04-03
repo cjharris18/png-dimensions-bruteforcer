@@ -40,7 +40,7 @@ Python is also great for string manipulation, something this program uses a lot.
 
 ## How does it work?
 
-Well, the way a PNG works is that it uses what is known as a **crc checksum** to check if a chunk is valid or not. The chunk that the dimensions are in is known as the **IHDR** chunk. So this program takes the target crc value and essentially keeps bruteforcing the image dimensions in the **IHDR** chunk, until they are valid. When they are, the **crc checksum** will be the same as our target. For more information on this, see [my writeup](https://cjharris.co.uk/intakectfmissingbytes/) for a CTF challenge regarding this issue.
+Well, the way a PNG works is that it uses what is known as a **crc checksum** to check if a chunk is valid or not. The chunk that the dimensions are in is known as the **IHDR** chunk. So this program takes the target crc value and essentially keeps bruteforcing the image dimensions in the **IHDR** chunk, until they are valid. When they are, the **crc checksum** will be the same as our target. For more information on this, see [my writeup](https://cjharris.co.uk/posts/intakectfmissingbytes/) for a CTF challenge regarding this issue.
 
 ## Usage
 
